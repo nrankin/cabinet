@@ -16,4 +16,17 @@ feature 'can create a new doc' do
 		expect { title && content }
 	end	
 
+	scenario 'can create a new document' do
+		visit new_doc_path
+
+		fill_in 'doc_title', with: 'My New Doc'
+		fill_in 'doc_content', with: 'Some amazing content'
+
+		click_button 'Create Doc'
+
+		expect(page).to have_content("My New Doc")
+		expect(page).to have_content("Some amazing content")
+	end
+
+
 end
