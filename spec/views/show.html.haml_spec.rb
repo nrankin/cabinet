@@ -16,4 +16,13 @@ describe 'docs/show.html.haml' do
 
 		expect(rendered).to have_link 'All Docs', href: "/docs"
 	end
+
+	it 'displays a link to delete this document' do
+		document = create(:doc)
+		assign(:doc, document)
+
+		render
+
+		expect(rendered).to have_link 'Trash It', href: "/docs/#{document.id}"
+	end
 end
