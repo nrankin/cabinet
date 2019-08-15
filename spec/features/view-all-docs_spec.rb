@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'view all docs' do
 
 	
