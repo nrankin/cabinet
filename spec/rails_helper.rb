@@ -28,6 +28,7 @@ require 'factory_bot_rails'
 # require only the support files necessary.
 #
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -39,9 +40,16 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
 
+  config.include Features::SessionHelpers, type: :feature
+
   config.include FactoryBot::Syntax::Methods
 
   config.include Devise::Test::ControllerHelpers, type: :controller
+
+  #run individual or all tests (manually add :focus to the single test you want to run)
+  config.filter_run :focus => true
+  config.run_all_when_everything_filtered = true
+
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

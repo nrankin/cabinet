@@ -1,6 +1,7 @@
 describe 'docs/index.html.haml' do
 	scenario 'displays a link to create a new doc' do
-		assign(:docs, create_list(:doc, 3))
+		user = create(:user)
+		assign(:docs, create_list(:doc, 3, user: user))
 		
 		render
 

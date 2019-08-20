@@ -1,6 +1,9 @@
 describe 'docs/show.html.haml' do
+
+	let(:user) { create(:user) }
+
 	it 'displays a link to edit' do
-		document = create(:doc)
+		document = create(:doc, user: user)
 		assign(:doc, document)
 
 		render
@@ -9,7 +12,7 @@ describe 'docs/show.html.haml' do
 	end
 
 	it 'displays a link to view all docs' do
-		document = create(:doc)
+		document = create(:doc, user: user)
 		assign(:doc, document)
 
 		render
@@ -18,7 +21,7 @@ describe 'docs/show.html.haml' do
 	end
 
 	it 'displays a link to delete this document' do
-		document = create(:doc)
+		document = create(:doc, user: user)
 		assign(:doc, document)
 
 		render

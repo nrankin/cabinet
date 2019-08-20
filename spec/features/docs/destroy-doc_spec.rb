@@ -1,6 +1,7 @@
 feature 'destroy doc' do
 	scenario 'user deletes doc' do
-		document = create(:doc)
+		user = create(:user)
+		document = create(:doc, user: user)
 
 		visit doc_path(document.id)
 

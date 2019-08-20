@@ -2,12 +2,14 @@ require 'rails_helper'
 
 feature 'can create a new doc' do
 	scenario 'views new doc page' do
+		log_in
 		visit new_doc_path
 
 		expect(page).to have_content("New Doc")
 	end
 
 	scenario 'can enter title and content' do
+		log_in
 		visit new_doc_path
 
 		title = page.find_by_id('doc_title')
@@ -17,6 +19,7 @@ feature 'can create a new doc' do
 	end	
 
 	scenario 'can create a new document' do
+		log_in
 		visit new_doc_path
 
 		fill_in 'doc_title', with: 'My New Doc'

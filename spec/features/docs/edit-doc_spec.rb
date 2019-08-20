@@ -1,6 +1,8 @@
 describe 'edit doc' do
+	let(:user) { create(:user) }
+
 	scenario 'user views edits page' do
-		document = create(:doc)
+		document = create(:doc, user: user)
 
 		visit edit_doc_path(id: document.id)
 
@@ -8,7 +10,7 @@ describe 'edit doc' do
 	end	
 
 	scenario 'user updates title' do
-		document = create(:doc, title: "Old Title")
+		document = create(:doc, title: "Old Title", user: user)
 
 		visit edit_doc_path(id: document.id)
 		fill_in 'Title', with: "New Title for Doc"
