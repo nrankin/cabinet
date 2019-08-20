@@ -10,11 +10,9 @@ module Features
 			click_button 'Sign up'
 		end	
 
-		def log_in
-			log_in_existing(create(:user))
-		end	
-
-		def log_in_existing(user)
+		def log_in(user = nil)
+			user = create(:user) unless user
+	
 			visit new_user_session_path
 
 			fill_in "Email", with: user.email
