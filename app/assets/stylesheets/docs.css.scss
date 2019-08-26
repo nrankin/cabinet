@@ -29,7 +29,8 @@
 			text-align: center;
 		}
 		.content {
-			position: absolute;
+			position: relative;
+			padding: 5px;
 			bottom: .25rem;
 			left: 27.5%;
 			color: $light_gray;
